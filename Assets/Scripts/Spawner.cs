@@ -4,103 +4,110 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private Transform[] airSpawnPoints;
+    [SerializeField] private Transform[] groundSpawnPoints;
+    [SerializeField] private Transform[] undergroundSpawnPoints;
 
-    [SerializeField]
-    Transform[] airSpawnPoints;
-    [SerializeField]
-    Transform[] groundSpawnPoints;
-    [SerializeField]
-    Transform[] undergroundSpawnPoints;
+    [SerializeField] private Enemy[] airEnemyPrefabs;
+    [SerializeField] private Enemy[] groundEnemyPrefabs;
+    [SerializeField] private Enemy[] undergroundEnemyPrefabs;
 
-    [SerializeField]
-    Enemy[] airEnemyPrefabs;
-    [SerializeField]
-    Enemy[] groundEnemyPrefabs;
-    [SerializeField]
-    Enemy[] undergroundEnemyPrefabs;
+    [SerializeField] int airEnemiesPoolSize;
+    [SerializeField] int groundEnemiesPoolSize;
+    [SerializeField] int undergroundEnemyPoolSize;
 
-    Queue<Enemy> airEnemyPool;
-    Queue<Enemy> groundEnemyPool;
-    Queue<Enemy> undergroundEnemyPool;
-
-    [SerializeField]
-    int airEnemiesPoolSize;
-    [SerializeField]
-    int groundEnemiesPoolSize;
-    [SerializeField]
-    int undergroundEnemyPoolSize;
-
-    [SerializeField]
-    float spawnTime;
+    [SerializeField] float spawnTime;
     float timer;
-    void Start()
+    
+    private Queue<Enemy> airEnemyPool;
+    private Queue<Enemy> groundEnemyPool;
+    private Queue<Enemy> undergroundEnemyPool;
+
+    private readonly Vector3 OffscreenPostion = new Vector3(11,6);
+    
+    private void Start()
     {
-        InitializeAirPool();
-        
-        Enemy.onEnemyCollision += QueueAirEnemy;
+        InitializePools();
     }
 
-    void Update()
+    private void Update()
     {
         timer += Time.deltaTime;
+        
         if (timer >= spawnTime)
         {
             timer = 0;
-            SpawnAirEnemy();
+            SpawnEnemy(airEnemyPool, airEnemyPrefabs, airSpawnPoints);
+            SpawnEnemy(groundEnemyPool, groundEnemyPrefabs, groundSpawnPoints);
+            SpawnEnemy(undergroundEnemyPool, undergroundEnemyPrefabs, undergroundSpawnPoints);
         }
     }
 
     private void InitializePools()
     {
-        InitializePool(airEnemyPool, airEnemyPrefabs, airEnemiesPoolSize);
-        InitializePool(groundEnemyPool, groundEnemyPrefabs, groundEnemiesPoolSize);
-        InitializePool(undergroundEnemyPool, undergroundEnemyPrefabs, undergroundEnemyPoolSize);
-    }
-
-    private void InitializePool(Queue<Enemy> enemiesPool, Enemy[] prefab, int poolSize)
-    {
-        airEnemyPool = new Queue<Enemy>();
-        Enemy instantiatedEnemy;
-        for (int i = 0; i < airEnemiesPoolSize; i++)
-        {
-            instantiatedEnemy = Instantiate(airEnemyPrefabs[0], new Vector3(11, 6, 0), Quaternion.identity);
-            instantiatedEnemy.gameObject.SetActive(false);
-            airEnemyPool.Enqueue(instantiatedEnemy);
-        }
+        InitializePool(ref airEnemyPool, airEnemyPrefabs, airEnemiesPoolSize);
+        InitializePool(ref groundEnemyPool, groundEnemyPrefabs, groundEnemiesPoolSize);
+        InitializePool(ref undergroundEnemyPool, undergroundEnemyPrefabs, undergroundEnemyPoolSize);
     }
     
-    void InitializeAirPool()
+    private void InitializePool(ref Queue<Enemy> enemiesPool, Enemy[] enemyPrefabs, int poolSize)
     {
-        airEnemyPool = new Queue<Enemy>();
+        enemiesPool = new Queue<Enemy>();
         
-        for (int i = 0; i < airEnemiesPoolSize; i++)
+        for (int i = 0; i < poolSize; i++)
         {
-            AddEnemyToPool();
+            // Spawn all types on  😘
+            Enemy enemy = CreateEnemy(enemyPrefabs);
+            AddEnemyToPool(enemiesPool, enemy);
         }
     }
 
-    void SpawnAirEnemy()
+    private Enemy CreateEnemy(Enemy[] enemyPrefabs)
     {
-        if (airEnemyPool.Count == 0)
+        // Some Random Logic to choose which enemy to spawn now?
+        return Instantiate(enemyPrefabs[0], OffscreenPostion, Quaternion.identity);
+    }
+
+    private void AddEnemyToPool(Queue<Enemy> enemiesPool, Enemy enemy)
+    {
+        enemy.gameObject.SetActive(false);
+        enemy.OnEnemyCollision += ReturnToPool;
+        enemiesPool.Enqueue(enemy);
+    }
+
+    private void ReturnToPool(Enemy enemy)
+    {
+        switch (enemy.enemyType)
         {
-            AddEnemyToPool();
+            case EnemyType.Air: 
+                airEnemyPool.Enqueue(enemy);
+                break;
+            case EnemyType.Ground : 
+                groundEnemyPool.Enqueue(enemy);
+                break;
+            case EnemyType.Underground:
+                undergroundEnemyPool.Enqueue(enemy);
+                break;
         }
+    }
+
+    private Vector3 PickSpawnPoint(Transform[] possibleSpawnPoints)
+    {
         Vector2 spawnOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
-        Enemy dequeuedEnemy = airEnemyPool.Dequeue();
-        dequeuedEnemy.transform.position = (Vector2)airSpawnPoints[Random.Range(0, 3)].position + spawnOffset;
+
+        return (Vector2) possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Length)].position + spawnOffset;
+    }
+
+    private void SpawnEnemy(Queue<Enemy> enemiesPool,Enemy[] enemyPrefabs, Transform[] spawnPoints)
+    {
+        if (enemiesPool.Count == 0)
+        {
+            Enemy enemy = CreateEnemy(enemyPrefabs);
+            AddEnemyToPool(enemiesPool, enemy);
+        }
+
+        Enemy dequeuedEnemy = enemiesPool.Dequeue();
+        dequeuedEnemy.transform.position = PickSpawnPoint(spawnPoints);
         dequeuedEnemy.gameObject.SetActive(true);
-    }
-
-    void AddEnemyToPool()
-    {
-        Enemy instantiatedEnemy;
-        instantiatedEnemy = Instantiate(airEnemyPrefabs[0], new Vector3(11, 6, 0), Quaternion.identity);
-        instantiatedEnemy.gameObject.SetActive(false);
-        airEnemyPool.Enqueue(instantiatedEnemy);
-    }
-
-    void QueueAirEnemy(Enemy enemyToQueue)
-    {
-        airEnemyPool.Enqueue(enemyToQueue);
     }
 }
