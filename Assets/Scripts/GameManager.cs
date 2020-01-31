@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public delegate void ScoreChange(int score);
-
     public event ScoreChange onScoreChange;
 
     public int shieldRepairPerPress = 30;
@@ -52,13 +51,11 @@ public class GameManager : MonoBehaviour
         gameMode = GameMode.Play;
         score = 0;
     }
-
     public void IncrementScore(int scoreToAdd)
     {
         score += scoreToAdd;
         onScoreChange?.Invoke(score);
     }
-
     public void LoseGame()
     {
         gameMode = GameMode.Pause;
