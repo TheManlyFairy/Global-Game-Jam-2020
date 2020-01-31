@@ -1,39 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using Utilities;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(EdgeCollider2D))]
 public class Shield : MonoBehaviour
-{
+{ 
     public delegate void ShieldBreak();
-    public static event ShieldBreak onShieldBreak;
-    [SerializeField]
-    int maxHealth = 300;
+    public static event ShieldBreak OnShieldBreak;
+    
+    [SerializeField] int maxHealth = 300;
     static int repairPerPressValue = 0;
-    int currentHealth;
-    SpriteRenderer spRend;
-
+    private int currentHealth;
+    private SpriteRenderer spriteRenderer;
+    private EdgeCollider2D edgeCollider2D;
     private void Start()
     {
-        spRend = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        edgeCollider2D = GetComponent<EdgeCollider2D>();
         repairPerPressValue = GameManager.Instance.shieldRepairPerPress;
         ResetShield();
     }
+
     public void ResetShield()
     {
+        edgeCollider2D.enabled = true;
         currentHealth = maxHealth;
-        spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, (float)currentHealth / (float)maxHealth);
+        ColorShield();
     }
+
     public void Repair()
     {
         currentHealth += repairPerPressValue;
+        
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }
-        spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, (float)currentHealth / (float)maxHealth);
+
+        ColorShield();
     }
+    private void ColorShield()
+    {
+        Color color = spriteRenderer.color;
+        color = new Color(color.r, color.g, color.b, (float) currentHealth / maxHealth);
+        spriteRenderer.color = color; 
+    }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Enemy enemyCollided = collision.collider.GetComponent<Enemy>();
@@ -41,14 +51,18 @@ public class Shield : MonoBehaviour
         if (enemyCollided)
         {
             currentHealth -= enemyCollided.DamageValue;
-            if(currentHealth<=0)
+
+            if (currentHealth <= 0)
             {
-                if(onShieldBreak!=null)
-                {
-                    onShieldBreak();
-                }
+                edgeCollider2D.enabled = false;
+                OnShieldBreak?.Invoke();
             }
-            spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, currentHealth / (float)maxHealth);
+            else
+            {
+                edgeCollider2D.enabled = true;
+            }
+
+            ColorShield();
         }
     }
 }

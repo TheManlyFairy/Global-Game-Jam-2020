@@ -7,42 +7,44 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject tutorialMenu;
-    [SerializeField] GameObject loseMenu;
-    [SerializeField] ScriptableTutorial[] tutorialPages;
-    [SerializeField] Image tutorialImage;
-    [SerializeField] TextMeshProUGUI tutorialText;
-    [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI playerScore;
-    [SerializeField] TextMeshProUGUI highScore;
-    [SerializeField] TextMeshProUGUI playTime;
-    [SerializeField] Spawner spawnManager;
+    public static UIManager Instance;
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject tutorialMenu;
+    [SerializeField] private GameObject loseMenu;
+    [SerializeField] private ScriptableTutorial[] tutorialPages;
+    [SerializeField] private Image tutorialImage;
+    [SerializeField] private TextMeshProUGUI tutorialText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI playerScore;
+    [SerializeField] private TextMeshProUGUI highScore;
+    [SerializeField] private TextMeshProUGUI playTime;
+    [SerializeField] private Spawner spawnManager;
 
-    ActiveMenu activeMenu;
-    int tutorialIndex = 0;
+    private ActiveMenu activeMenu;
+    private int _tutorialIndex = 0;
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
-            Destroy(instance.gameObject);
+            Destroy(Instance.gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
             activeMenu = ActiveMenu.Main;
             tutorialImage.sprite = tutorialPages[0].sprite;
             tutorialText.text = tutorialPages[0].text;
             scoreText.text = "Score: 0";
         }
     }
+
     private void Start()
     {
-        GameManager.Instance.onScoreChange += UpdateScore;
-        Shield.onShieldBreak += PopupLoseMenu;
+        GameManager.Instance.OnScoreChange += UpdateScore;
+        GameManager.Instance.OnGameOver += PopupLoseMenu;
     }
+
     private void Update()
     {
         if (GameManager.CurrentGameMode == GameMode.Pause)
@@ -62,7 +64,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void PopupLoseMenu()
+    private void PopupLoseMenu()
     {
         activeMenu = ActiveMenu.Lose;
         scoreText.gameObject.SetActive(false);
@@ -71,64 +73,72 @@ public class UIManager : MonoBehaviour
         playerScore.text = "Your Score: " + GameManager.Instance.Score;
         highScore.text = "High Score: " + GameManager.Instance.HighScore;
     }
-    void MainMenuInput()
+
+    private void MainMenuInput()
     {
-        if (Input.GetKeyDown((KeyCode)DancePadKey.Start) || Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown((KeyCode) DancePadKey.Start) || Input.GetKeyDown(KeyCode.S))
         {
             mainMenu.SetActive(false);
             GameManager.Instance.StartGame();
         }
-        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleLeft) || Input.GetKeyDown(KeyCode.A))
+
+        if (Input.GetKeyDown((KeyCode) DancePadKey.MiddleLeft) || Input.GetKeyDown(KeyCode.A))
         {
             activeMenu = ActiveMenu.Tutorial;
             mainMenu.SetActive(false);
             tutorialMenu.SetActive(true);
         }
     }
-    void TutorialMenuInput()
+
+    private void TutorialMenuInput()
     {
-        if (Input.GetKeyDown((KeyCode)DancePadKey.Back) || Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown((KeyCode) DancePadKey.Back) || Input.GetKeyDown(KeyCode.Backspace))
         {
             activeMenu = ActiveMenu.Main;
             tutorialMenu.SetActive(false);
             mainMenu.SetActive(true);
         }
-        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleLeft) || Input.GetKeyDown(KeyCode.A))
+
+        if (Input.GetKeyDown((KeyCode) DancePadKey.MiddleLeft) || Input.GetKeyDown(KeyCode.A))
         {
-            if (tutorialIndex > 0)
+            if (_tutorialIndex > 0)
             {
-                tutorialIndex--;
-                tutorialImage.sprite = tutorialPages[tutorialIndex].sprite;
-                tutorialText.text = tutorialPages[tutorialIndex].text;
+                _tutorialIndex--;
+                tutorialImage.sprite = tutorialPages[_tutorialIndex].sprite;
+                tutorialText.text = tutorialPages[_tutorialIndex].text;
             }
         }
-        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleRight) || Input.GetKeyDown(KeyCode.D))
+
+        if (Input.GetKeyDown((KeyCode) DancePadKey.MiddleRight) || Input.GetKeyDown(KeyCode.D))
         {
-            if (tutorialIndex < tutorialPages.Length - 1)
+            if (_tutorialIndex < tutorialPages.Length - 1)
             {
-                tutorialIndex++;
-                tutorialImage.sprite = tutorialPages[tutorialIndex].sprite;
-                tutorialText.text = tutorialPages[tutorialIndex].text;
+                _tutorialIndex++;
+                tutorialImage.sprite = tutorialPages[_tutorialIndex].sprite;
+                tutorialText.text = tutorialPages[_tutorialIndex].text;
             }
         }
     }
-    void LoseMenuInput()
+
+    private void LoseMenuInput()
     {
-        if(Input.GetKeyDown((KeyCode)DancePadKey.Start) || Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown((KeyCode) DancePadKey.Start) || Input.GetKeyDown(KeyCode.S))
         {
             loseMenu.SetActive(false);
             spawnManager.Restart();
             GameManager.Instance.StartGame();
             scoreText.gameObject.SetActive(true);
         }
-        if (Input.GetKeyDown((KeyCode)DancePadKey.Back) || Input.GetKeyDown(KeyCode.Backspace))
+
+        if (Input.GetKeyDown((KeyCode) DancePadKey.Back) || Input.GetKeyDown(KeyCode.Backspace))
         {
             activeMenu = ActiveMenu.Main;
             loseMenu.SetActive(false);
             mainMenu.SetActive(true);
         }
     }
-    void UpdateScore(int score)
+
+    private void UpdateScore(int score)
     {
         scoreText.text = "Score: " + score;
     }

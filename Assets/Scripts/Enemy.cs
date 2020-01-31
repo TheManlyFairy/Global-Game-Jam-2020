@@ -9,39 +9,39 @@ public class Enemy : MonoBehaviour
     
     public EnemyType enemyType;
 
-    private Rigidbody2D rigBody;
+    private Rigidbody2D _rigidBody;
 
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private int damageValue = 5;
     [SerializeField] private int scoreValue = 15;
 
-    public int DamageValue
-    {
-        get { return damageValue; }
-    }
+    public int DamageValue => damageValue;
 
     private void Start()
     {
-        rigBody = GetComponent<Rigidbody2D>();
-        rigBody.constraints = RigidbodyConstraints2D.FreezeRotation;
-        rigBody.gravityScale = 0;
+        _rigidBody = GetComponent<Rigidbody2D>();
+        _rigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        _rigidBody.gravityScale = 0;
     }
 
     private void FixedUpdate()
     {
         if (GameManager.CurrentGameMode == GameMode.Play)
-            rigBody.MovePosition(rigBody.position +
-                                 ((Vector2) (GameManager.Instance.TargetPosition) - (Vector2) (transform.position)) *
-                                 (moveSpeed * Time.deltaTime));
+        {
+            Vector2 moveDirection = ((Vector2) (GameManager.Instance.TargetPosition) - (Vector2) transform.position)
+                .normalized;
+            _rigidBody.velocity = moveDirection * (moveSpeed * Time.deltaTime);
+        }
+        else if (GameManager.CurrentGameMode == GameMode.Pause)
+        {
+            _rigidBody.velocity = Vector2.zero;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (OnEnemyCollision != null)
-        {
-            GameManager.Instance.IncrementScore(scoreValue);
-            gameObject.SetActive(false);
-            OnEnemyCollision.Invoke(this);
-        }
+        GameManager.Instance.IncrementScore(scoreValue);
+        gameObject.SetActive(false);
+        OnEnemyCollision?.Invoke(this);
     }
 }

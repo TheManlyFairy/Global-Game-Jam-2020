@@ -1,24 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Utilities;
 
+[RequireComponent(typeof(CapsuleCollider2D))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] Transform[] playerPositions;
     [SerializeField] ParticleSystem teleportOut;
     [SerializeField] ParticleSystem teleportIn;
     [SerializeField] GameObject spriteObj;
     DancePadKey lastKeyPressed;
+    [SerializeField] Transform[] defencePoses;
 
-    void Update()
+    private void Update()
     {
         if (GameManager.CurrentGameMode == GameMode.Play)
+        {
             MoveAndRepair();
+        }
     }
 
-    void MoveAndRepair()
+    private void OnCollisionEnter2D(Collision2D other)
     {
+        GameManager.Instance.GameOver();
+    }
+
+    private void MoveAndRepair()
+    {
+        int repairIndex = -1;
+        
         if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleLeft) || Input.GetKeyDown(KeyCode.A))
         {
             if (lastKeyPressed != DancePadKey.MiddleLeft)
@@ -92,6 +100,14 @@ public class Player : MonoBehaviour
                 lastKeyPressed = DancePadKey.TopRight;
             }
             GameManager.Instance.ShieldMap[7].Repair();
+        }
+
+        if (repairIndex != -1)
+        {
+            var cachedTransform = transform;
+            cachedTransform.rotation = defencePoses[repairIndex].rotation;
+            cachedTransform.position = defencePoses[repairIndex].position;
+            GameManager.Instance.ShieldMap[repairIndex].Repair();   
         }
     }
 
