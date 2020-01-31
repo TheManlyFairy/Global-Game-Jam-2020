@@ -6,22 +6,20 @@ using UnityEngine.UI;
 public class Shield : MonoBehaviour
 {
     [SerializeField]
-    int maxHealth;
-    [SerializeField]
-    int repairPerPressValue = 25;
+    int maxHealth = 300;
+    static int repairPerPressValue = 0;
     int currentHealth;
-    Image image;
-    void Start()
+    SpriteRenderer spRend;
+
+    private void Start()
     {
-        currentHealth = maxHealth / 2;
-        image = GetComponent<Image>();
-        image.color = new Color(image.color.r, image.color.g, image.color.b, (float)currentHealth / (float)maxHealth);
+        spRend = GetComponent<SpriteRenderer>();
+        currentHealth = maxHealth;
+        spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, (float)currentHealth / (float)maxHealth);
+        repairPerPressValue = GameManager.instance.shieldRepairPerPress;
     }
 
-    void Update()
-    {
 
-    }
 
     public void Repair()
     {
@@ -30,7 +28,7 @@ public class Shield : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        image.color = new Color(image.color.r, image.color.g, image.color.b, (float)currentHealth / (float)maxHealth);
+        spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, (float)currentHealth / (float)maxHealth);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -39,7 +37,7 @@ public class Shield : MonoBehaviour
         if (enemyCollided)
         {
             currentHealth -= enemyCollided.DamageValue;
-            image.color = new Color(image.color.r, image.color.g, image.color.b, (float)currentHealth / (float)maxHealth);
+            spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, currentHealth / (float)maxHealth);
         }
     }
 }
