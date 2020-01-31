@@ -32,15 +32,19 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        
-        if (timer >= spawnTime)
+        if(GameManager.CurrentGameMode==GameManager.GameMode.Play)
         {
-            timer = 0;
-            SpawnEnemy(airEnemyPool, airEnemyPrefabs, airSpawnPoints);
-            SpawnEnemy(groundEnemyPool, groundEnemyPrefabs, groundSpawnPoints);
-            SpawnEnemy(undergroundEnemyPool, undergroundEnemyPrefabs, undergroundSpawnPoints);
+            timer += Time.deltaTime;
+
+            if (timer >= spawnTime)
+            {
+                timer = 0;
+                SpawnEnemy(airEnemyPool, airEnemyPrefabs, airSpawnPoints);
+                SpawnEnemy(groundEnemyPool, groundEnemyPrefabs, groundSpawnPoints);
+                SpawnEnemy(undergroundEnemyPool, undergroundEnemyPrefabs, undergroundSpawnPoints);
+            }
         }
+        
     }
 
     private void InitializePools()
