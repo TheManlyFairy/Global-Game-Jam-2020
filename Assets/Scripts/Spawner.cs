@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Utilities;
 
@@ -18,14 +17,18 @@ public class Spawner : MonoBehaviour
     [SerializeField] int undergroundEnemyPoolSize;
 
     [SerializeField] float spawnInterval = 0.6f;
+    [SerializeField] private float spawnAirEnemiesTime= 15;
+    [SerializeField] private float spawnUndergroundEnemiesTime = 30;
+    [SerializeField] private float spawnIntervalModifier = 0.025f;
+    [SerializeField] private float spawnModificationDelta = 2.5f;
+    
     private float spawnTimer;
     private float timer;
+    private float spawnModifierTimer;
     private List<Enemy> airEnemyPool;
     private List<Enemy> groundEnemyPool;
     private List<Enemy> undergroundEnemyPool;
     private List<Enemy> spawnedEnemies;
-    [SerializeField] private float spawnAirEnemiesTime= 15;
-    [SerializeField] private float spawnUndergroundEnemiesTime = 30;
     
     private readonly Vector3 OffscreenPostion = new Vector3(11, 6);
 
@@ -58,7 +61,7 @@ public class Spawner : MonoBehaviour
                 spawnTimer = 0;
                 
                 Enemy groundEnemy = GetEnemy(groundEnemyPool, groundEnemyPrefabs);
-                SpawnEnemy(groundEnemy, groundSpawnPoints,false);
+                SpawnEnemy(groundEnemy, groundSpawnPoints);
                 
                 if (spawnAirEnemiesTime < timer)
                 {
@@ -70,6 +73,13 @@ public class Spawner : MonoBehaviour
                 {
                     Enemy underGroundEnemy = GetEnemy(undergroundEnemyPool, undergroundEnemyPrefabs);
                     SpawnEnemy(underGroundEnemy, undergroundSpawnPoints);
+                    spawnModifierTimer += Time.deltaTime;
+                    
+                    if (spawnModifierTimer >= spawnModificationDelta)
+                    {
+                        spawnModifierTimer = 0;
+                        spawnInterval -= spawnIntervalModifier;
+                    }
                 }
             }
         }
