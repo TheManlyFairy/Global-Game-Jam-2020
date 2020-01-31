@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI playerScore;
     [SerializeField] TextMeshProUGUI highScore;
     [SerializeField] TextMeshProUGUI playTime;
+    [SerializeField] Spawner spawnManager;
 
     ActiveMenu activeMenu;
     int tutorialIndex = 0;
@@ -113,6 +114,8 @@ public class UIManager : MonoBehaviour
         if(Input.GetKeyDown((KeyCode)DancePadKey.Start))
         {
             loseMenu.SetActive(false);
+            spawnManager.Restart();
+            GameManager.Instance.StartGame();
         }
         if (Input.GetKeyDown((KeyCode)DancePadKey.Back))
         {
