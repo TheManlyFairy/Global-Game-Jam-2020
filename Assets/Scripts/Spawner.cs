@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     int groundEnemiesPoolSize;
     [SerializeField]
-    int undergroundEnemiesSize;
+    int undergroundEnemyPoolSize;
 
     [SerializeField]
     float spawnTime;
@@ -36,6 +36,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         InitializeAirPool();
+        
         Enemy.onEnemyCollision += QueueAirEnemy;
     }
 
@@ -49,6 +50,25 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    private void InitializePools()
+    {
+        InitializePool(airEnemyPool, airEnemyPrefabs, airEnemiesPoolSize);
+        InitializePool(groundEnemyPool, groundEnemyPrefabs, groundEnemiesPoolSize);
+        InitializePool(undergroundEnemyPool, undergroundEnemyPrefabs, undergroundEnemyPoolSize);
+    }
+
+    private void InitializePool(Queue<Enemy> enemiesPool, Enemy[] prefab, int poolSize)
+    {
+        airEnemyPool = new Queue<Enemy>();
+        Enemy instantiatedEnemy;
+        for (int i = 0; i < airEnemiesPoolSize; i++)
+        {
+            instantiatedEnemy = Instantiate(airEnemyPrefabs[0], new Vector3(11, 6, 0), Quaternion.identity);
+            instantiatedEnemy.gameObject.SetActive(false);
+            airEnemyPool.Enqueue(instantiatedEnemy);
+        }
+    }
+    
     void InitializeAirPool()
     {
         airEnemyPool = new Queue<Enemy>();
