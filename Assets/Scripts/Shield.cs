@@ -16,7 +16,7 @@ public class Shield : MonoBehaviour
         spRend = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
         spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, (float)currentHealth / (float)maxHealth);
-        repairPerPressValue = GameManager.instance.shieldRepairPerPress;
+        repairPerPressValue = GameManager.Instance.shieldRepairPerPress;
     }
 
 

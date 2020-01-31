@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     public int shieldRepairPerPress = 30;
-    [SerializeField]Transform enemyTarget;
-    [SerializeField]Shield[] shields;
+    
+    [SerializeField] private Transform enemyTarget;
+    [SerializeField] private Shield[] shields;
+    
+    public Shield[] ShieldMap => shields;
+    public Vector3 TargetPosition => enemyTarget.position;
 
-
-    public Shield[] ShieldMap { get { return shields; } }
-    public Vector3 TargetPosition { get { return enemyTarget.position; } }
-    private void Start()
+    private void Awake()
     {
-        if(instance!=null)
+        if (Instance != null)
         {
-            Destroy(instance.gameObject);
+            Destroy(Instance.gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 }

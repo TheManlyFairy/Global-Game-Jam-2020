@@ -1,22 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class Enemy : MonoBehaviour
 {
     public delegate void EnemyCollided(Enemy enemy);
-    public static event EnemyCollided onEnemyCollision;
+    public event EnemyCollided OnEnemyCollision;
 
     public Transform enemyTarget;
-    Rigidbody2D rigBody;
-    Vector3 startPos;
+    public EnemyType enemyType;
+    
+    private Rigidbody2D rigBody;
+    private Vector3 startPos;
 
-    [SerializeField]
-    float moveSpeed = 5;
-    [SerializeField]
-    int damageValue = 5;
+    [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private int damageValue = 5;
+    
+    public int DamageValue
+    {
+        get { return damageValue; }
+    }
 
-    public int DamageValue { get { return damageValue; } }
     private void Start()
     {
         startPos = transform.position;
@@ -25,19 +30,20 @@ public class Enemy : MonoBehaviour
         rigBody.gravityScale = 0;
 
     }
+
     private void FixedUpdate()
     {
-        rigBody.MovePosition(rigBody.position + 
-                             ((Vector2)(GameManager.instance.TargetPosition) - 
-                              (Vector2)(transform.position)) * moveSpeed * Time.deltaTime);
+        rigBody.MovePosition(rigBody.position +
+                             ((Vector2) (GameManager.Instance.TargetPosition) -
+                              (Vector2) (transform.position)) * (moveSpeed * Time.deltaTime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (onEnemyCollision != null)
+        if (OnEnemyCollision != null)
         {
             gameObject.SetActive(false);
-            onEnemyCollision(this);
+            OnEnemyCollision.Invoke(this);
         }
     }
 }
