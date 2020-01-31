@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 public class Shield : MonoBehaviour
 {
+    public delegate void ShieldBreak();
+    public static event ShieldBreak onShieldBreak;
     [SerializeField]
     int maxHealth = 300;
     static int repairPerPressValue = 0;
@@ -37,6 +40,13 @@ public class Shield : MonoBehaviour
         if (enemyCollided)
         {
             currentHealth -= enemyCollided.DamageValue;
+            if(currentHealth<=0)
+            {
+                if(onShieldBreak!=null)
+                {
+                    onShieldBreak();
+                }
+            }
             spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, currentHealth / (float)maxHealth);
         }
     }

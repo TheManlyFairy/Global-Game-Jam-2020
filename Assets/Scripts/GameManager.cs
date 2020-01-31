@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Utilities;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public event ScoreChange onScoreChange;
 
     public int shieldRepairPerPress = 30;
-    public enum GameMode { Pause, Play }
+    
     public GameMode gameMode;
     [SerializeField] Transform enemyTarget;
     [SerializeField] Shield[] shields;
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             gameMode = GameMode.Pause;
+            Shield.onShieldBreak += LoseGame;
         }
     }
     public void StartGame()
@@ -44,5 +45,11 @@ public class GameManager : MonoBehaviour
         {
             onScoreChange(score);
         }
+    }
+
+    public void LoseGame()
+    {
+        gameMode = GameMode.Pause;
+        score = 0;
     }
 }

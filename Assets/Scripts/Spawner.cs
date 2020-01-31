@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class Spawner : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.CurrentGameMode == GameManager.GameMode.Play)
+        if (GameManager.CurrentGameMode == GameMode.Play)
         {
             timer += Time.deltaTime;
 

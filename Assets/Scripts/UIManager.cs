@@ -10,12 +10,15 @@ public class UIManager : MonoBehaviour
     public static UIManager instance;
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject tutorialMenu;
+    [SerializeField] GameObject loseMenu;
     [SerializeField] ScriptableTutorial[] tutorialPages;
     [SerializeField] Image tutorialImage;
     [SerializeField] TextMeshProUGUI tutorialText;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI playerScore;
+    [SerializeField] TextMeshProUGUI highScore;
+    [SerializeField] TextMeshProUGUI playTime;
 
-    enum ActiveMenu { Main, Tutorial }
     ActiveMenu activeMenu;
     int tutorialIndex = 0;
 
@@ -37,22 +40,33 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.onScoreChange += UpdateScore;
+        Shield.onShieldBreak += PopupLoseMenu;
     }
     private void Update()
     {
-        if (GameManager.CurrentGameMode == GameManager.GameMode.Pause)
+        if (GameManager.CurrentGameMode == GameMode.Pause)
         {
-            if (activeMenu == ActiveMenu.Main)
+            switch (activeMenu)
             {
-                MainMenuInput();
-            }
-            if (activeMenu == ActiveMenu.Tutorial)
-            {
-                TutorialMenuInput();
+                case ActiveMenu.Main:
+                    MainMenuInput();
+                    break;
+                case ActiveMenu.Tutorial:
+                    TutorialMenuInput();
+                    break;
+                case ActiveMenu.Lose:
+                    LoseMenuInput();
+                    break;
             }
         }
     }
 
+    public void PopupLoseMenu()
+    {
+        activeMenu = ActiveMenu.Lose;
+        scoreText.gameObject.SetActive(false);
+        loseMenu.SetActive(true);
+    }
     void MainMenuInput()
     {
         if (Input.GetKeyDown((KeyCode)DancePadKey.Start) || Input.GetKeyDown(KeyCode.S))
@@ -86,7 +100,7 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleRight))
         {
-            if (tutorialIndex < tutorialPages.Length-1)
+            if (tutorialIndex < tutorialPages.Length - 1)
             {
                 tutorialIndex++;
                 tutorialImage.sprite = tutorialPages[tutorialIndex].sprite;
@@ -94,8 +108,21 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    void LoseMenuInput()
+    {
+        if(Input.GetKeyDown((KeyCode)DancePadKey.Start))
+        {
+            loseMenu.SetActive(false);
+        }
+        if (Input.GetKeyDown((KeyCode)DancePadKey.Back))
+        {
+            activeMenu = ActiveMenu.Main;
+            loseMenu.SetActive(false);
+            mainMenu.SetActive(true);
+        }
+    }
     void UpdateScore(int score)
     {
-        scoreText.text = "Score: "+score;
+        scoreText.text = "Score: " + score;
     }
 }
