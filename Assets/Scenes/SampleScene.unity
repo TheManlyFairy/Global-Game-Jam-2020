@@ -1786,11 +1786,14 @@ MonoBehaviour:
   - {fileID: 2103166701}
   - {fileID: 1561643035}
   airEnemyPrefabs:
-  - {fileID: 40821730821035142, guid: 8d878bcc32760c44ca3f91dbd52752d2, type: 3}
+  - {fileID: 40821730821035142, guid: 5ca77261c1f2a4c32960da28a8e0b7ab, type: 3}
+  - {fileID: 3002478300914352844, guid: 8d878bcc32760c44ca3f91dbd52752d2, type: 3}
   groundEnemyPrefabs:
   - {fileID: 40821730821035142, guid: 83d75aa15138543a58bf7f979a2e2d19, type: 3}
+  - {fileID: 3002478300914352844, guid: f93ca9181f8814945871e211c5eb49de, type: 3}
   undergroundEnemyPrefabs:
   - {fileID: 40821730821035142, guid: 62eec34ffcfc94fcca4edf85d8c608cc, type: 3}
+  - {fileID: 3002478300914352844, guid: 9781252684c6a40e7a2c0d10aec42698, type: 3}
   airEnemiesPoolSize: 10
   groundEnemiesPoolSize: 5
   undergroundEnemyPoolSize: 5
@@ -2262,7 +2265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.700012, y: -9.799988}
+  m_AnchoredPosition: {x: -15.699951, y: -9.799988}
   m_SizeDelta: {x: -261.1, y: -126.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378423255
@@ -2649,7 +2652,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
