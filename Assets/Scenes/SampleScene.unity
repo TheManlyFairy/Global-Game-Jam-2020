@@ -1922,11 +1922,13 @@ MonoBehaviour:
   - {fileID: 1561643035}
   airEnemyPrefabs:
   - {fileID: 40821730821035142, guid: 8d878bcc32760c44ca3f91dbd52752d2, type: 3}
-  groundEnemyPrefabs: []
-  undergroundEnemyPrefabs: []
+  groundEnemyPrefabs:
+  - {fileID: 40821730821035142, guid: 83d75aa15138543a58bf7f979a2e2d19, type: 3}
+  undergroundEnemyPrefabs:
+  - {fileID: 40821730821035142, guid: 62eec34ffcfc94fcca4edf85d8c608cc, type: 3}
   airEnemiesPoolSize: 10
-  groundEnemiesPoolSize: 0
-  undergroundEnemiesSize: 0
+  groundEnemiesPoolSize: 5
+  undergroundEnemyPoolSize: 5
   spawnTime: 0.2
 --- !u!4 &1067576144
 Transform:
