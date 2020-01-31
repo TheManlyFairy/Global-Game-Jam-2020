@@ -33,15 +33,15 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigBody.MovePosition(rigBody.position +
-                             ((Vector2) (GameManager.Instance.TargetPosition) -
-                              (Vector2) (transform.position)) * (moveSpeed * Time.deltaTime));
+        if(GameManager.CurrentGameMode==GameManager.GameMode.Play)
+            rigBody.MovePosition(rigBody.position + ((Vector2)(GameManager.instance.TargetPosition) - (Vector2)(transform.position)) * moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (OnEnemyCollision != null)
         {
+            GameManager.instance.IncrementScore(scoreValue);
             gameObject.SetActive(false);
             OnEnemyCollision.Invoke(this);
         }
