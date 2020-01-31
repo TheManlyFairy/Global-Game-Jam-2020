@@ -39,6 +39,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = spawnedEnemies.Count - 1; i >= 0; --i)
         {
+            spawnedEnemies[i].gameObject.SetActive(false);
             ReturnToPool(spawnedEnemies[i]);
         }
         
