@@ -17,36 +17,59 @@ public class Spawner : MonoBehaviour
     [SerializeField] int groundEnemiesPoolSize;
     [SerializeField] int undergroundEnemyPoolSize;
 
-    [SerializeField] float spawnTime;
-    float timer;
-
+    [SerializeField] float spawnInterval = 0.6f;
+    private float spawnTimer;
+    private float timer;
     private List<Enemy> airEnemyPool;
     private List<Enemy> groundEnemyPool;
     private List<Enemy> undergroundEnemyPool;
-
+    private List<Enemy> spawnedEnemies;
+    [SerializeField] private float spawnAirEnemiesTime= 15;
+    [SerializeField] private float spawnUndergroundEnemiesTime = 30;
+    
     private readonly Vector3 OffscreenPostion = new Vector3(11, 6);
 
     private void Start()
     {
+        spawnedEnemies = new List<Enemy>();
         InitializePools();
+    }
+
+    public void Restart()
+    {
+        for (int i = spawnedEnemies.Count - 1; i >= 0; --i)
+        {
+            ReturnToPool(spawnedEnemies[i]);
+        }
+        
+        timer = 0;
     }
 
     private void Update()
     {
         if (GameManager.CurrentGameMode == GameMode.Play)
         {
+            spawnTimer += Time.deltaTime;
             timer += Time.deltaTime;
-
-            if (timer >= spawnTime)
+            
+            if (spawnTimer >= spawnInterval)
             {
-                timer = 0;
-                Enemy airEnemy = GetEnemy(airEnemyPool, airEnemyPrefabs);
+                spawnTimer = 0;
+                
                 Enemy groundEnemy = GetEnemy(groundEnemyPool, groundEnemyPrefabs);
-                Enemy underGroundEnemy = GetEnemy(undergroundEnemyPool, undergroundEnemyPrefabs);
+                SpawnEnemy(groundEnemy, groundSpawnPoints,false);
+                
+                if (spawnAirEnemiesTime < timer)
+                {
+                    Enemy airEnemy = GetEnemy(airEnemyPool, airEnemyPrefabs);
+                    SpawnEnemy(airEnemy, airSpawnPoints);
+                }
 
-                SpawnEnemy(airEnemy, airSpawnPoints);
-                SpawnEnemy(groundEnemy, groundSpawnPoints, false);
-                SpawnEnemy(underGroundEnemy, undergroundSpawnPoints);
+                if (spawnUndergroundEnemiesTime < timer)
+                {
+                    Enemy underGroundEnemy = GetEnemy(undergroundEnemyPool, undergroundEnemyPrefabs);
+                    SpawnEnemy(underGroundEnemy, undergroundSpawnPoints);
+                }
             }
         }
     }
@@ -84,6 +107,8 @@ public class Spawner : MonoBehaviour
 
     private void ReturnToPool(Enemy enemy)
     {
+        spawnedEnemies.Remove(enemy);
+        
         switch (enemy.enemyType)
         {
             case EnemyType.Air:
@@ -123,7 +148,8 @@ public class Spawner : MonoBehaviour
         int index = Random.Range(0, enemiesPool.Count);
         enemy = enemiesPool[index];
         enemiesPool.RemoveAt(index);
-
+        spawnedEnemies.Add(enemy);
+        
         return enemy;
     }
 
