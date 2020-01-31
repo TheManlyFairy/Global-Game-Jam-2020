@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
 
     void MainMenuInput()
     {
-        if (Input.GetKeyDown((KeyCode)DancePadKey.Start))
+        if (Input.GetKeyDown((KeyCode)DancePadKey.Start) || Input.GetKeyDown(KeyCode.S))
         {
             mainMenu.SetActive(false);
             GameManager.Instance.StartGame();

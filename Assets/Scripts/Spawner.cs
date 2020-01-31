@@ -18,13 +18,13 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] float spawnTime;
     float timer;
-    
-    private Queue<Enemy> airEnemyPool;
-    private Queue<Enemy> groundEnemyPool;
-    private Queue<Enemy> undergroundEnemyPool;
 
-    private readonly Vector3 OffscreenPostion = new Vector3(11,6);
-    
+    private List<Enemy> airEnemyPool;
+    private List<Enemy> groundEnemyPool;
+    private List<Enemy> undergroundEnemyPool;
+
+    private readonly Vector3 OffscreenPostion = new Vector3(11, 6);
+
     private void Start()
     {
         InitializePools();
@@ -32,19 +32,22 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.CurrentGameMode==GameManager.GameMode.Play)
+        if (GameManager.CurrentGameMode == GameManager.GameMode.Play)
         {
             timer += Time.deltaTime;
 
             if (timer >= spawnTime)
             {
                 timer = 0;
-                SpawnEnemy(airEnemyPool, airEnemyPrefabs, airSpawnPoints);
-                SpawnEnemy(groundEnemyPool, groundEnemyPrefabs, groundSpawnPoints);
-                SpawnEnemy(undergroundEnemyPool, undergroundEnemyPrefabs, undergroundSpawnPoints);
+                Enemy airEnemy = GetEnemy(airEnemyPool, airEnemyPrefabs);
+                Enemy groundEnemy = GetEnemy(groundEnemyPool, groundEnemyPrefabs);
+                Enemy underGroundEnemy = GetEnemy(undergroundEnemyPool, undergroundEnemyPrefabs);
+
+                SpawnEnemy(airEnemy, airSpawnPoints);
+                SpawnEnemy(groundEnemy, groundSpawnPoints, false);
+                SpawnEnemy(underGroundEnemy, undergroundSpawnPoints);
             }
         }
-        
     }
 
     private void InitializePools()
@@ -53,14 +56,13 @@ public class Spawner : MonoBehaviour
         InitializePool(ref groundEnemyPool, groundEnemyPrefabs, groundEnemiesPoolSize);
         InitializePool(ref undergroundEnemyPool, undergroundEnemyPrefabs, undergroundEnemyPoolSize);
     }
-    
-    private void InitializePool(ref Queue<Enemy> enemiesPool, Enemy[] enemyPrefabs, int poolSize)
+
+    private void InitializePool(ref List<Enemy> enemiesPool, Enemy[] enemyPrefabs, int poolSize)
     {
-        enemiesPool = new Queue<Enemy>();
-        
+        enemiesPool = new List<Enemy>();
+
         for (int i = 0; i < poolSize; i++)
         {
-            // Spawn all types on  😘
             Enemy enemy = CreateEnemy(enemyPrefabs);
             AddEnemyToPool(enemiesPool, enemy);
         }
@@ -69,49 +71,64 @@ public class Spawner : MonoBehaviour
     private Enemy CreateEnemy(Enemy[] enemyPrefabs)
     {
         // Some Random Logic to choose which enemy to spawn now?
-        return Instantiate(enemyPrefabs[0], OffscreenPostion, Quaternion.identity);
+        return Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], OffscreenPostion, Quaternion.identity);
     }
 
-    private void AddEnemyToPool(Queue<Enemy> enemiesPool, Enemy enemy)
+    private void AddEnemyToPool(List<Enemy> enemiesPool, Enemy enemy)
     {
         enemy.gameObject.SetActive(false);
         enemy.OnEnemyCollision += ReturnToPool;
-        enemiesPool.Enqueue(enemy);
+        enemiesPool.Add(enemy);
     }
 
     private void ReturnToPool(Enemy enemy)
     {
         switch (enemy.enemyType)
         {
-            case EnemyType.Air: 
-                airEnemyPool.Enqueue(enemy);
+            case EnemyType.Air:
+                airEnemyPool.Add(enemy);
                 break;
-            case EnemyType.Ground : 
-                groundEnemyPool.Enqueue(enemy);
+            case EnemyType.Ground:
+                groundEnemyPool.Add(enemy);
                 break;
             case EnemyType.Underground:
-                undergroundEnemyPool.Enqueue(enemy);
+                undergroundEnemyPool.Add(enemy);
                 break;
         }
     }
 
-    private Vector3 PickSpawnPoint(Transform[] possibleSpawnPoints)
+    private Vector3 PickSpawnPoint(Transform[] possibleSpawnPoints, bool addOffset = true)
     {
-        Vector2 spawnOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
+        Vector2 spawnOffset = Vector2.zero;
+
+        if (addOffset)
+        {
+            spawnOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
+        }
 
         return (Vector2) possibleSpawnPoints[Random.Range(0, possibleSpawnPoints.Length)].position + spawnOffset;
     }
 
-    private void SpawnEnemy(Queue<Enemy> enemiesPool,Enemy[] enemyPrefabs, Transform[] spawnPoints)
+    private Enemy GetEnemy(List<Enemy> enemiesPool, Enemy[] enemyPrefabs)
     {
+        Enemy enemy;
+
         if (enemiesPool.Count == 0)
         {
-            Enemy enemy = CreateEnemy(enemyPrefabs);
+            enemy = CreateEnemy(enemyPrefabs);
             AddEnemyToPool(enemiesPool, enemy);
         }
 
-        Enemy dequeuedEnemy = enemiesPool.Dequeue();
-        dequeuedEnemy.transform.position = PickSpawnPoint(spawnPoints);
-        dequeuedEnemy.gameObject.SetActive(true);
+        int index = Random.Range(0, enemiesPool.Count);
+        enemy = enemiesPool[index];
+        enemiesPool.RemoveAt(index);
+
+        return enemy;
+    }
+
+    private void SpawnEnemy(Enemy enemyToSpawn, Transform[] spawnPoints, bool addOffset = true)
+    {
+        enemyToSpawn.transform.position = PickSpawnPoint(spawnPoints, addOffset);
+        enemyToSpawn.gameObject.SetActive(true);
     }
 }
