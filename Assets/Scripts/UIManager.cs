@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.instance.onScoreChange += UpdateScore;
+        GameManager.Instance.onScoreChange += UpdateScore;
     }
     private void Update()
     {
@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown((KeyCode)DancePadKey.Start))
         {
             mainMenu.SetActive(false);
-            GameManager.instance.StartGame();
+            GameManager.Instance.StartGame();
         }
         if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleLeft))
         {

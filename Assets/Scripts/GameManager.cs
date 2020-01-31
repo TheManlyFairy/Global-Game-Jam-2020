@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     public delegate void ScoreChange(int score);
     public event ScoreChange onScoreChange;
 
@@ -18,17 +18,17 @@ public class GameManager : MonoBehaviour
 
     public Shield[] ShieldMap { get { return shields; } }
     public Vector3 TargetPosition { get { return enemyTarget.position; } }
-    public static GameMode CurrentGameMode { get { return instance.gameMode; } }
+    public static GameMode CurrentGameMode { get { return Instance.gameMode; } }
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(Instance.gameObject);
         }
         else
         {
-            instance = this;
+            Instance = this;
             gameMode = GameMode.Pause;
         }
     }

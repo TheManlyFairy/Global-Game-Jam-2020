@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -7,16 +6,15 @@ public class Enemy : MonoBehaviour
 {
     public delegate void EnemyCollided(Enemy enemy);
     public event EnemyCollided OnEnemyCollision;
-
-    public Transform enemyTarget;
-    public EnemyType enemyType;
     
+    public EnemyType enemyType;
+
     private Rigidbody2D rigBody;
-    private Vector3 startPos;
 
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private int damageValue = 5;
-    
+    [SerializeField] private int scoreValue = 15;
+
     public int DamageValue
     {
         get { return damageValue; }
@@ -24,24 +22,24 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        startPos = transform.position;
         rigBody = GetComponent<Rigidbody2D>();
         rigBody.constraints = RigidbodyConstraints2D.FreezeRotation;
         rigBody.gravityScale = 0;
-
     }
 
     private void FixedUpdate()
     {
-        if(GameManager.CurrentGameMode==GameManager.GameMode.Play)
-            rigBody.MovePosition(rigBody.position + ((Vector2)(GameManager.instance.TargetPosition) - (Vector2)(transform.position)) * moveSpeed * Time.deltaTime);
+        if (GameManager.CurrentGameMode == GameManager.GameMode.Play)
+            rigBody.MovePosition(rigBody.position +
+                                 ((Vector2) (GameManager.Instance.TargetPosition) - (Vector2) (transform.position)) *
+                                 (moveSpeed * Time.deltaTime));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (OnEnemyCollision != null)
         {
-            GameManager.instance.IncrementScore(scoreValue);
+            GameManager.Instance.IncrementScore(scoreValue);
             gameObject.SetActive(false);
             OnEnemyCollision.Invoke(this);
         }
