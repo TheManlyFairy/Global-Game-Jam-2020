@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -30,7 +27,9 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rigBody.MovePosition(rigBody.position + ((Vector2)(GameManager.instance.TargetPosition) - (Vector2)(transform.position)) * moveSpeed * Time.deltaTime);
+        rigBody.MovePosition(rigBody.position + 
+                             ((Vector2)(GameManager.instance.TargetPosition) - 
+                              (Vector2)(transform.position)) * moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
