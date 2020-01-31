@@ -41,7 +41,8 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        if (GameManager.CurrentGameMode == GameManager.GameMode.Play)
+            timer += Time.deltaTime;
         if (timer >= spawnTime)
         {
             timer = 0;
@@ -52,7 +53,7 @@ public class Spawner : MonoBehaviour
     void InitializeAirPool()
     {
         airEnemyPool = new Queue<Enemy>();
-        
+
         for (int i = 0; i < airEnemiesPoolSize; i++)
         {
             AddEnemyToPool();

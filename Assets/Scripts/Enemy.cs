@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
 {
     public delegate void EnemyCollided(Enemy enemy);
     public static event EnemyCollided onEnemyCollision;
+    [SerializeField] int scoreValue=15;
 
-    public Transform enemyTarget;
     Rigidbody2D rigBody;
     Vector3 startPos;
 
@@ -30,13 +30,15 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rigBody.MovePosition(rigBody.position + ((Vector2)(GameManager.instance.TargetPosition) - (Vector2)(transform.position)) * moveSpeed * Time.deltaTime);
+        if(GameManager.CurrentGameMode==GameManager.GameMode.Play)
+            rigBody.MovePosition(rigBody.position + ((Vector2)(GameManager.instance.TargetPosition) - (Vector2)(transform.position)) * moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (onEnemyCollision != null)
         {
+            GameManager.instance.IncrementScore(scoreValue);
             gameObject.SetActive(false);
             onEnemyCollision(this);
         }

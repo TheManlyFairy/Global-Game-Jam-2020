@@ -5,22 +5,44 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int shieldRepairPerPress = 30;
-    [SerializeField]Transform enemyTarget;
-    [SerializeField]Shield[] shields;
+    public delegate void ScoreChange(int score);
+    public event ScoreChange onScoreChange;
 
+    public int shieldRepairPerPress = 30;
+    public enum GameMode { Pause, Play }
+    public GameMode gameMode;
+    [SerializeField] Transform enemyTarget;
+    [SerializeField] Shield[] shields;
+
+    int score;
 
     public Shield[] ShieldMap { get { return shields; } }
     public Vector3 TargetPosition { get { return enemyTarget.position; } }
-    private void Start()
+    public static GameMode CurrentGameMode { get { return instance.gameMode; } }
+
+    private void Awake()
     {
-        if(instance!=null)
+        if (instance != null)
         {
             Destroy(instance.gameObject);
         }
         else
         {
             instance = this;
+            gameMode = GameMode.Pause;
+        }
+    }
+    public void StartGame()
+    {
+        gameMode = GameMode.Play;
+        score = 0;
+    }
+    public void IncrementScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        if(onScoreChange!=null)
+        {
+            onScoreChange(score);
         }
     }
 }
