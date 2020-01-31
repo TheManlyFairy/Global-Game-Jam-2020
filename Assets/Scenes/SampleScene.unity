@@ -438,11 +438,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_Points:
-  - {x: -0.72329193, y: -1.3199941}
-  - {x: -0.24568886, y: -0.22036664}
-  - {x: 0.8113248, y: 0.5473148}
+  - {x: -0.6185726, y: -0.7566124}
+  - {x: -0.28308862, y: -0.16566941}
+  - {x: 0.22564289, y: 0.32306424}
+  - {x: 0.7776648, y: 0.60748196}
 --- !u!114 &330654829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1047,11 +1048,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_Points:
-  - {x: -0.7893169, y: 0.5312172}
-  - {x: -0.017839432, y: 0.07619522}
-  - {x: 0.5967443, y: -0.8048741}
+  - {x: -0.78379416, y: 0.61198616}
+  - {x: -0.21113253, y: 0.31042472}
+  - {x: 0.2630539, y: -0.103728175}
+  - {x: 0.6354027, y: -0.7644897}
 --- !u!114 &653761779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,11 +1416,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_Points:
-  - {x: -0.651765, y: 0.78072786}
-  - {x: 0.0026426772, y: -0.040067196}
-  - {x: 0.7838149, y: -0.5634122}
+  - {x: -0.6456634, y: 0.7985754}
+  - {x: -0.3257883, y: 0.2277875}
+  - {x: 0.1643396, y: -0.28101087}
+  - {x: 0.789917, y: -0.62587905}
 --- !u!114 &1008924143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1560,11 +1563,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_Points:
-  - {x: -0.7948189, y: -0.5553632}
-  - {x: -0.04623258, y: -0.6959114}
-  - {x: 0.8278309, y: -0.5714605}
+  - {x: -0.78522515, y: -0.6489036}
+  - {x: -0.36602938, y: -0.766067}
+  - {x: 0.31987572, y: -0.76375484}
+  - {x: 0.7926532, y: -0.6556473}
 --- !u!114 &1033402058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1676,11 +1680,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_Points:
-  - {x: -0.78931683, y: 0.55536276}
-  - {x: 0.0038288832, y: 0.71250784}
-  - {x: 0.8113252, y: 0.490973}
+  - {x: -0.78261095, y: 0.64362997}
+  - {x: -0.24093819, y: 0.76154506}
+  - {x: 0.2261213, y: 0.75753886}
+  - {x: 0.7878543, y: 0.6527959}
 --- !u!114 &1039744230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1797,7 +1802,9 @@ MonoBehaviour:
   airEnemiesPoolSize: 10
   groundEnemiesPoolSize: 5
   undergroundEnemyPoolSize: 5
-  spawnTime: 0.6
+  spawnInterval: 0.6
+  spawnAirEnemiesTime: 15
+  spawnUndergroundEnemiesTime: 30
 --- !u!4 &1067576144
 Transform:
   m_ObjectHideFlags: 0
@@ -1859,11 +1866,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_Points:
-  - {x: -0.8113251, y: -0.53121686}
-  - {x: 0.019736767, y: -0.05996871}
-  - {x: 0.5912421, y: 0.75658154}
+  - {x: -0.7771025, y: -0.62361836}
+  - {x: -0.19074178, y: -0.31007624}
+  - {x: 0.25439906, y: 0.09768176}
+  - {x: 0.63596845, y: 0.74888587}
 --- !u!114 &1127512502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,7 +2273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.699951, y: -9.799988}
+  m_AnchoredPosition: {x: -15.699951, y: -9.800049}
   m_SizeDelta: {x: -261.1, y: -126.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378423255
@@ -2502,11 +2510,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_Points:
-  - {x: -0.66276896, y: -0.6680459}
-  - {x: -0.7608909, y: 0.09350073}
-  - {x: -0.55869114, y: 0.8370692}
+  - {x: -0.6677675, y: -0.7630774}
+  - {x: -0.775886, y: -0.293934}
+  - {x: -0.7862353, y: 0.20752716}
+  - {x: -0.67916644, y: 0.7542469}
 --- !u!114 &1540606308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2904,11 +2913,12 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.2
+  m_EdgeRadius: 0.1
   m_Points:
-  - {x: 0.59170365, y: -0.69219196}
-  - {x: 0.74530077, y: 0.008048892}
-  - {x: 0.59124255, y: 0.7968255}
+  - {x: 0.6851764, y: -0.76054394}
+  - {x: 0.78844213, y: -0.32319438}
+  - {x: 0.77797794, y: 0.42712831}
+  - {x: 0.67752457, y: 0.7600206}
 --- !u!114 &1945920881
 MonoBehaviour:
   m_ObjectHideFlags: 0
