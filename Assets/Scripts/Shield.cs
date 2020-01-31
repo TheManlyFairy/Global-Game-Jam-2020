@@ -17,13 +17,14 @@ public class Shield : MonoBehaviour
     private void Start()
     {
         spRend = GetComponent<SpriteRenderer>();
+        repairPerPressValue = GameManager.Instance.shieldRepairPerPress;
+        ResetShield();
+    }
+    public void ResetShield()
+    {
         currentHealth = maxHealth;
         spRend.color = new Color(spRend.color.r, spRend.color.g, spRend.color.b, (float)currentHealth / (float)maxHealth);
-        repairPerPressValue = GameManager.Instance.shieldRepairPerPress;
     }
-
-
-
     public void Repair()
     {
         currentHealth += repairPerPressValue;
