@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using Utilities;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class Enemy : MonoBehaviour
@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.CurrentGameMode == GameManager.GameMode.Play)
+        if (GameManager.CurrentGameMode == GameMode.Play)
             rigBody.MovePosition(rigBody.position +
                                  ((Vector2) (GameManager.Instance.TargetPosition) - (Vector2) (transform.position)) *
                                  (moveSpeed * Time.deltaTime));
