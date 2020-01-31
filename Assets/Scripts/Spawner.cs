@@ -72,28 +72,23 @@ public class Spawner : MonoBehaviour
     void InitializeAirPool()
     {
         airEnemyPool = new Queue<Enemy>();
-        Enemy instantiatedEnemy;
+        
         for (int i = 0; i < airEnemiesPoolSize; i++)
         {
-            instantiatedEnemy = Instantiate(airEnemyPrefabs[0], new Vector3(11, 6, 0), Quaternion.identity);
-            instantiatedEnemy.gameObject.SetActive(false);
-            airEnemyPool.Enqueue(instantiatedEnemy);
+            AddEnemyToPool();
         }
     }
 
     void SpawnAirEnemy()
     {
-        if (airEnemyPool.Count > 0)
-        {
-            Vector2 spawnOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
-            Enemy dequeuedEnemy = airEnemyPool.Dequeue();
-            dequeuedEnemy.transform.position = (Vector2)airSpawnPoints[Random.Range(0, 3)].position + spawnOffset;
-            dequeuedEnemy.gameObject.SetActive(true);
-        }
-        else
+        if (airEnemyPool.Count == 0)
         {
             AddEnemyToPool();
         }
+        Vector2 spawnOffset = new Vector2(Random.Range(-2f, 2f), Random.Range(-2f, 2f));
+        Enemy dequeuedEnemy = airEnemyPool.Dequeue();
+        dequeuedEnemy.transform.position = (Vector2)airSpawnPoints[Random.Range(0, 3)].position + spawnOffset;
+        dequeuedEnemy.gameObject.SetActive(true);
     }
 
     void AddEnemyToPool()

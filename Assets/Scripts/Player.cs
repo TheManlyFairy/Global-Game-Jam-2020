@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    Transform[] playerPositions;
+    [SerializeField]Transform[] playerPositions;
 
     void Start()
     {
@@ -16,11 +15,13 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.JoystickButton0))
         {
-            Debug.Log("Pressed JoystickButton0");
+            transform.position = playerPositions[0].position;
+            GameManager.instance.ShieldMap[0].Repair();
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
-            Debug.Log("Pressed JoystickButton1");
+            transform.position = playerPositions[1].position;
+            GameManager.instance.ShieldMap[1].Repair();
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton2))
         {
@@ -29,15 +30,18 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton3))
         {
-            Debug.Log("Pressed JoystickButton3");
+            transform.position = playerPositions[3].position;
+            GameManager.instance.ShieldMap[3].Repair();
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton4))
         {
-            Debug.Log("Pressed JoystickButton4");
+            transform.position = playerPositions[4].position;
+            GameManager.instance.ShieldMap[4].Repair();
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton5))
         {
-            Debug.Log("Pressed JoystickButton5");
+            transform.position = playerPositions[5].position;
+            GameManager.instance.ShieldMap[5].Repair();
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton6))
         {
