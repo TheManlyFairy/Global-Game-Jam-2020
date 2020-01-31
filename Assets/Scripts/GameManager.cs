@@ -1,47 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Utilities;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public delegate void ScoreChange(int score);
-    public event ScoreChange onScoreChange;
+
+    public event ScoreChange OnScoreChange;
     public int shieldRepairPerPress = 30;
     public GameMode gameMode;
 
-    public int Score
-    {
-        get
-        {
-            return score;
-        }
-    }
-    public int HighScore
-    {
-        get
-        {
-            return highScore;
-        }
-    }
-    public Vector3 TargetPosition
-    {
-        get { return enemyTarget.position; }
-    }
-    public Shield[] ShieldMap
-    {
-        get { return shields; }
-    }
-    public static GameMode CurrentGameMode
-    {
-        get { return Instance.gameMode; }
-    }
+    public int Score { get; private set; }
+    public int HighScore { get; private set; }
+    public Vector3 TargetPosition => enemyTarget.position;
+    public Shield[] ShieldMap => shields;
+    public static GameMode CurrentGameMode => Instance.gameMode;
 
-    [SerializeField] Transform enemyTarget;
-    [SerializeField] Shield[] shields;
-
-    int score;
-    int highScore;
+    [SerializeField] private Transform enemyTarget;
+    [SerializeField] private Shield[] shields;
 
     private void Awake()
     {
@@ -53,40 +29,42 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             gameMode = GameMode.Pause;
-            Shield.onShieldBreak += LoseGame;
-            score = 0;
-            highScore = PlayerPrefs.GetInt("HighScore");
+            Score = 0;
+            HighScore = PlayerPrefs.GetInt("HighScore");
         }
     }
 
     public void StartGame()
     {
         gameMode = GameMode.Play;
-        score = 0;
+        Score = 0;
 
         ResetShields();
     }
+
     public void IncrementScore(int scoreToAdd)
     {
-        score += scoreToAdd;
-        onScoreChange?.Invoke(score);
+        Score += scoreToAdd;
+        OnScoreChange?.Invoke(Score);
     }
+
     public void LoseGame()
     {
         gameMode = GameMode.Pause;
-        highScore = score > highScore ? score : highScore;
+        HighScore = Score > HighScore ? Score : HighScore;
     }
-    void ResetShields()
+
+    private void ResetShields()
     {
-        for (int i = 0; i < shields.Length; i++)
+        foreach (Shield shield in shields)
         {
-            shields[i].ResetShield();
+            shield.ResetShield();
         }
     }
 
     private void OnApplicationQuit()
     {
-        PlayerPrefs.SetInt("HighScore", highScore);
+        PlayerPrefs.SetInt("HighScore", HighScore);
     }
 }
 

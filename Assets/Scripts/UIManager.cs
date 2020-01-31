@@ -40,8 +40,8 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        GameManager.Instance.onScoreChange += UpdateScore;
-        Shield.onShieldBreak += PopupLoseMenu;
+        GameManager.Instance.OnScoreChange += UpdateScore;
+        Shield.OnShieldBreak += PopupLoseMenu;
     }
     private void Update()
     {

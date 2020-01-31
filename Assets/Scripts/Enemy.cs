@@ -15,10 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int damageValue = 5;
     [SerializeField] private int scoreValue = 15;
 
-    public int DamageValue
-    {
-        get { return damageValue; }
-    }
+    public int DamageValue => damageValue;
 
     private void Start()
     {
@@ -37,11 +34,8 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (OnEnemyCollision != null)
-        {
-            GameManager.Instance.IncrementScore(scoreValue);
-            gameObject.SetActive(false);
-            OnEnemyCollision.Invoke(this);
-        }
+        GameManager.Instance.IncrementScore(scoreValue);
+        gameObject.SetActive(false);
+        OnEnemyCollision?.Invoke(this);
     }
 }
