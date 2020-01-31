@@ -5,11 +5,7 @@ using Utilities;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]Transform[] playerPositions;
-    [SerializeField] float maxMana;
-    [SerializeField] float manaDrainPerPress;
-    [SerializeField] float manaGainPerSecond;
-    float currentMana;
+    [SerializeField] Transform[] playerPositions;
 
     void Update()
     {
@@ -59,10 +55,5 @@ public class Player : MonoBehaviour
             transform.position = playerPositions[7].position;
             GameManager.Instance.ShieldMap[7].Repair();
         }
-    }
-
-    void DrainMana()
-    {
-
     }
 }
