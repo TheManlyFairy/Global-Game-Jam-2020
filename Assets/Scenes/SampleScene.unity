@@ -6481,14 +6481,14 @@ MonoBehaviour:
   gameMode: 0
   enemyTarget: {fileID: 1735544261}
   shields:
-  - {fileID: 1540606308}
-  - {fileID: 1033402058}
+  - {fileID: 330654829}
   - {fileID: 1039744230}
+  - {fileID: 653761779}
+  - {fileID: 1540606308}
   - {fileID: 1945920881}
   - {fileID: 1008924143}
+  - {fileID: 1033402058}
   - {fileID: 1127512502}
-  - {fileID: 330654829}
-  - {fileID: 653761779}
 --- !u!1 &957411737
 GameObject:
   m_ObjectHideFlags: 0
@@ -13053,18 +13053,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8726e24d2f6ec44e83c2494a81fce67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defencePoses:
-  - {fileID: 715343899}
-  - {fileID: 1994153604}
-  - {fileID: 427108638}
-  - {fileID: 515041824}
-  - {fileID: 1393371269}
-  - {fileID: 1022554446}
-  - {fileID: 334222497}
-  - {fileID: 1220044672}
   teleportOut: {fileID: 368832881}
   teleportIn: {fileID: 1528586965}
   spriteObj: {fileID: 85508820}
+  defencePoses:
+  - {fileID: 334222497}
+  - {fileID: 427108638}
+  - {fileID: 1220044672}
+  - {fileID: 715343899}
+  - {fileID: 515041824}
+  - {fileID: 1393371269}
+  - {fileID: 1994153604}
+  - {fileID: 1022554446}
 --- !u!4 &1735544261
 Transform:
   m_ObjectHideFlags: 0
