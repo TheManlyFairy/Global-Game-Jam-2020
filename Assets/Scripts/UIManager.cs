@@ -67,6 +67,9 @@ public class UIManager : MonoBehaviour
         activeMenu = ActiveMenu.Lose;
         scoreText.gameObject.SetActive(false);
         loseMenu.SetActive(true);
+        scoreText.text = "Score: 0";
+        playerScore.text = "Your Score: " + GameManager.Instance.Score;
+        highScore.text = "High Score: " + GameManager.Instance.HighScore;
     }
     void MainMenuInput()
     {
@@ -75,7 +78,7 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(false);
             GameManager.Instance.StartGame();
         }
-        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleLeft))
+        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleLeft) || Input.GetKeyDown(KeyCode.A))
         {
             activeMenu = ActiveMenu.Tutorial;
             mainMenu.SetActive(false);
@@ -84,13 +87,13 @@ public class UIManager : MonoBehaviour
     }
     void TutorialMenuInput()
     {
-        if (Input.GetKeyDown((KeyCode)DancePadKey.Back))
+        if (Input.GetKeyDown((KeyCode)DancePadKey.Back) || Input.GetKeyDown(KeyCode.Backspace))
         {
             activeMenu = ActiveMenu.Main;
             tutorialMenu.SetActive(false);
             mainMenu.SetActive(true);
         }
-        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleLeft))
+        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleLeft) || Input.GetKeyDown(KeyCode.A))
         {
             if (tutorialIndex > 0)
             {
@@ -99,7 +102,7 @@ public class UIManager : MonoBehaviour
                 tutorialText.text = tutorialPages[tutorialIndex].text;
             }
         }
-        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleRight))
+        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleRight) || Input.GetKeyDown(KeyCode.D))
         {
             if (tutorialIndex < tutorialPages.Length - 1)
             {
@@ -111,13 +114,14 @@ public class UIManager : MonoBehaviour
     }
     void LoseMenuInput()
     {
-        if(Input.GetKeyDown((KeyCode)DancePadKey.Start))
+        if(Input.GetKeyDown((KeyCode)DancePadKey.Start) || Input.GetKeyDown(KeyCode.S))
         {
             loseMenu.SetActive(false);
             spawnManager.Restart();
             GameManager.Instance.StartGame();
+            scoreText.gameObject.SetActive(true);
         }
-        if (Input.GetKeyDown((KeyCode)DancePadKey.Back))
+        if (Input.GetKeyDown((KeyCode)DancePadKey.Back) || Input.GetKeyDown(KeyCode.Backspace))
         {
             activeMenu = ActiveMenu.Main;
             loseMenu.SetActive(false);
