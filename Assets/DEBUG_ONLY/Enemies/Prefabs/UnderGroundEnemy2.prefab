@@ -142,6 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 2
-  moveSpeed: 1
+  moveSpeed: 200
   damageValue: 25
   scoreValue: 30

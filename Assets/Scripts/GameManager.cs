@@ -5,8 +5,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public delegate void ScoreChange(int score);
-
+    
     public event ScoreChange OnScoreChange;
+    public event System.Action OnGameOver;
+    
     public int shieldRepairPerPress = 30;
     public GameMode gameMode;
 
@@ -48,10 +50,11 @@ public class GameManager : MonoBehaviour
         OnScoreChange?.Invoke(Score);
     }
 
-    public void LoseGame()
+    public void GameOver()
     {
         gameMode = GameMode.Pause;
         HighScore = Score > HighScore ? Score : HighScore;
+        OnGameOver?.Invoke();
     }
 
     private void ResetShields()

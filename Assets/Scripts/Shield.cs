@@ -21,6 +21,7 @@ public class Shield : MonoBehaviour
 
     public void ResetShield()
     {
+        edgeCollider2D.enabled = true;
         currentHealth = maxHealth;
         ColorShield();
     }
@@ -55,6 +56,10 @@ public class Shield : MonoBehaviour
             {
                 edgeCollider2D.enabled = false;
                 OnShieldBreak?.Invoke();
+            }
+            else
+            {
+                edgeCollider2D.enabled = true;
             }
 
             ColorShield();

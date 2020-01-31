@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 40821730821035161}
   - component: {fileID: 40821730821035142}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: AirEnemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f996b1390b8e39b4182568cfcc4c34a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTarget: {fileID: 0}
-  moveSpeed: 0.7
+  enemyType: 0
+  moveSpeed: 200
   damageValue: 20
+  scoreValue: 15
