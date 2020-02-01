@@ -79,7 +79,7 @@ public class UIManager : MonoBehaviour
 
     private void MainMenuInput()
     {
-        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleRight) || Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown((KeyCode)DancePadKey.MiddleRight) || Input.GetKeyDown(KeyCode.D))
         {
             mainMenu.SetActive(false);
             GameManager.Instance.StartGame();

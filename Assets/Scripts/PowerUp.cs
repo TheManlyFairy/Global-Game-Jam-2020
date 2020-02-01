@@ -12,6 +12,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private Sprite pressedDiagonalArrow;
     [SerializeField] private SpriteRenderer[] diagonalArrows;
     [SerializeField] private SpriteRenderer[] straightArrows;
+    [SerializeField] private Animator shieldGlowAnimator;
     [SerializeField] private float minActiveTime;
     [SerializeField] private float maxActiveTime;
     [SerializeField] private float minIntervalTime;
@@ -75,11 +76,12 @@ public class PowerUp : MonoBehaviour
 
                     if (selectedPositions.Count == activeArrowsAmount)
                     {
+                        shieldGlowAnimator.SetTrigger("Glow");
                         for (int i = 0; i < GameManager.Instance.ShieldMap.Length; i++)
                         {
                             GameManager.Instance.ShieldMap[i].ResetShield();
                         }
-
+                        
                         aciveTimer = activeTime;
                     }
 
