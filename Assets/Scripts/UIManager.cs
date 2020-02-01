@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject tutorialMenu;
     [SerializeField] private GameObject loseMenu;
+    [SerializeField] private GameObject scoreObject;
     [SerializeField] private ScriptableTutorial[] tutorialPages;
     [SerializeField] private Image tutorialImage;
     [SerializeField] private TextMeshProUGUI tutorialText;
@@ -67,7 +68,7 @@ public class UIManager : MonoBehaviour
     private void PopupLoseMenu()
     {
         activeMenu = ActiveMenu.Lose;
-        scoreText.gameObject.SetActive(false);
+        scoreObject.SetActive(false);
         loseMenu.SetActive(true);
         scoreText.text = "Score: 0";
         playerScore.text = "Your Score: " + GameManager.Instance.Score;
@@ -80,6 +81,7 @@ public class UIManager : MonoBehaviour
         {
             mainMenu.SetActive(false);
             GameManager.Instance.StartGame();
+            scoreObject.SetActive(true);
         }
 
         if (Input.GetKeyDown((KeyCode) DancePadKey.MiddleLeft) || Input.GetKeyDown(KeyCode.A))
@@ -127,7 +129,7 @@ public class UIManager : MonoBehaviour
             loseMenu.SetActive(false);
             spawnManager.Restart();
             GameManager.Instance.StartGame();
-            scoreText.gameObject.SetActive(true);
+            scoreObject.SetActive(true);
         }
 
         if (Input.GetKeyDown((KeyCode) DancePadKey.Back) || Input.GetKeyDown(KeyCode.Backspace))
