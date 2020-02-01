@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: c91e54a0b72856040bb9dc26d0919c1a
+guid: ac835b7d4c3be0e46b82a3ec6c655132
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -5928422287912249518
-    second: Enemy Bee_0
-  - first:
-      213: -6609291094165796237
-    second: Enemy Bee_1
-  - first:
-      213: 1563366292250186711
-    second: Enemy Bee_2
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -49,12 +40,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 500
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,70 +96,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Enemy Bee_0
-      rect:
-        serializedVersion: 2
-        x: 34
-        y: 0
-        width: 646
-        height: 868
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2575b7ad6530abda0800000000000000
-      internalID: -5928422287912249518
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy Bee_1
-      rect:
-        serializedVersion: 2
-        x: 749
-        y: 63
-        width: 648
-        height: 687
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 37a481374c41744a0800000000000000
-      internalID: -6609291094165796237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy Bee_2
-      rect:
-        serializedVersion: 2
-        x: 1487
-        y: 113
-        width: 632
-        height: 571
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d354671c5132b510800000000000000
-      internalID: 1563366292250186711
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
