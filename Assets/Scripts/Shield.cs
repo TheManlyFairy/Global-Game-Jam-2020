@@ -11,10 +11,12 @@ public class Shield : MonoBehaviour
     private int currentHealth;
     private SpriteRenderer spriteRenderer;
     private EdgeCollider2D edgeCollider2D;
+    private AudioSource audioSrc;
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         edgeCollider2D = GetComponent<EdgeCollider2D>();
+        audioSrc = GetComponent<AudioSource>();
         repairPerPressValue = GameManager.Instance.shieldRepairPerPress;
         ResetShield();
     }
@@ -43,13 +45,13 @@ public class Shield : MonoBehaviour
         color = new Color(color.r, color.g, color.b, (float) currentHealth / maxHealth);
         spriteRenderer.color = color; 
     }
-    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Enemy enemyCollided = collision.collider.GetComponent<Enemy>();
 
         if (enemyCollided)
         {
+            audioSrc.Play();
             currentHealth -= enemyCollided.DamageValue;
 
             if (currentHealth <= 0)

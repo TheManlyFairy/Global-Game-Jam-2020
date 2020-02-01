@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] ParticleSystem teleportOut;
     [SerializeField] ParticleSystem teleportIn;
-    [SerializeField] GameObject spriteObj;
+    [SerializeField] SpriteRenderer spriteRend;
     DancePadKey lastKeyPressed;
     [SerializeField] Transform[] defencePoses;
 
@@ -110,13 +110,13 @@ public class Player : MonoBehaviour
     IEnumerator Move(int index)
     {
         teleportOut.Play();
-        yield return new WaitForSeconds(0.2f); 
-        spriteObj.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        spriteRend.enabled = false;
         yield return null;
         transform.position = defencePoses[index].position;
         transform.rotation = defencePoses[index].rotation;
         teleportIn.Play();
         yield return new WaitForSeconds(0.2f);
-        spriteObj.SetActive(true);
+        spriteRend.enabled = true;
     }
 }
