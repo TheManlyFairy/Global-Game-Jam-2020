@@ -102,8 +102,6 @@ public class Player : MonoBehaviour
             }
             GameManager.Instance.ShieldMap[7].Repair();
         }
-       
-        
     }
 
     IEnumerator Move(int index)
@@ -113,7 +111,7 @@ public class Player : MonoBehaviour
         spriteRend.enabled = false;
         yield return null;
         transform.position = defencePoses[index].position;
-        transform.rotation = defencePoses[index].rotation;
+        transform.rotation = transform.position.x > 0f ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
         teleportIn.Play();
         yield return new WaitForSeconds(0.2f);
         spriteRend.enabled = true;
