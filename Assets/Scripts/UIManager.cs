@@ -92,6 +92,10 @@ public class UIManager : MonoBehaviour
             mainMenu.SetActive(false);
             tutorialMenu.SetActive(true);
         }
+        if (Input.GetKeyDown((KeyCode)DancePadKey.Back) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     private void TutorialMenuInput()

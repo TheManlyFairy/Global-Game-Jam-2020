@@ -12651,8 +12651,8 @@ MonoBehaviour:
   shieldGlowAnimator: {fileID: 1099925517}
   minActiveTime: 0.8
   maxActiveTime: 1.2
-  minIntervalTime: 5
-  maxIntervalTime: 5
+  minIntervalTime: 20
+  maxIntervalTime: 30
   playerTransform: {fileID: 1735544261}
 --- !u!1 &792958585
 GameObject:
