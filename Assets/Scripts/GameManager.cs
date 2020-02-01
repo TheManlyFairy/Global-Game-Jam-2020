@@ -30,12 +30,16 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            gameMode = GameMode.Pause;
+            gameMode = GameMode.Title;
             Score = 0;
             HighScore = PlayerPrefs.GetInt("HighScore");
         }
     }
 
+    public void ReadyGame()
+    {
+        gameMode = GameMode.Pause;
+    }
     public void StartGame()
     {
         gameMode = GameMode.Play;

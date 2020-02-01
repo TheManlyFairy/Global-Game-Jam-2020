@@ -11,7 +11,7 @@ namespace Utilities
         BottomLeft = KeyCode.JoystickButton4, BottomMiddle = KeyCode.JoystickButton1, BottomRight = KeyCode.JoystickButton5,
         Back = KeyCode.JoystickButton8, Start = KeyCode.JoystickButton9
     }
-    public enum GameMode { Pause, Play }
+    public enum GameMode { Pause, Play, Title }
     public enum ActiveMenu { Main, Tutorial, Lose }
 
 }
