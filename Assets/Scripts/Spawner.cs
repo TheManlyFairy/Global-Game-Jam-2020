@@ -167,6 +167,18 @@ public class Spawner : MonoBehaviour
     private void SpawnEnemy(Enemy enemyToSpawn, Transform[] spawnPoints, bool addOffset = true)
     {
         enemyToSpawn.transform.position = PickSpawnPoint(spawnPoints, addOffset);
+        float enemyScale = Random.Range(enemyToSpawn.MinScale, enemyToSpawn.MaxScale);
+        enemyToSpawn.transform.localScale = new Vector3(enemyScale, enemyScale, enemyScale);
+        
+        if (enemyToSpawn.transform.position.x < 0f)
+        {
+            enemyToSpawn.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            enemyToSpawn.transform.rotation = Quaternion.identity;
+        }
+        
         enemyToSpawn.gameObject.SetActive(true);
     }
 }
