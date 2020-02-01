@@ -1,40 +1,34 @@
 fileFormatVersion: 2
-guid: 0b5dafbfea2654632a27c45036ce6791
+guid: 4ab2d9731e8a1d844bac201b6b6e8c46
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4737414189628889789
-    second: Tutorial_Full_Set_Buttons_0
+      213: -9047755677109045738
+    second: magiccircle_0
   - first:
-      213: -5491053598623359141
-    second: Tutorial_Full_Set_Buttons_1
+      213: 3477527096013309423
+    second: magiccircle_1
   - first:
-      213: 3205465260988563836
-    second: Tutorial_Full_Set_Buttons_2
+      213: -4253758599283925792
+    second: magiccircle_2
   - first:
-      213: 8313908903275441858
-    second: Tutorial_Full_Set_Buttons_3
+      213: 5400206720784516674
+    second: magiccircle_3
   - first:
-      213: -8237830395532473352
-    second: Tutorial_Full_Set_Buttons_4
+      213: -7660292996916605625
+    second: magiccircle_4
   - first:
-      213: -3468400149864473584
-    second: Tutorial_Full_Set_Buttons_5
+      213: -6141752182860290982
+    second: magiccircle_5
   - first:
-      213: -30887525496988771
-    second: Tutorial_Full_Set_Buttons_6
+      213: 4362206296414756641
+    second: magiccircle_6
   - first:
-      213: 6097344478920775016
-    second: Tutorial_Full_Set_Buttons_7
+      213: -4851529405484936794
+    second: magiccircle_7
   - first:
-      213: 5570615345001440906
-    second: Tutorial_Full_Set_Buttons_8
-  - first:
-      213: -9072246719657776772
-    second: Tutorial_Full_Set_Buttons_9
-  - first:
-      213: 3534432874895065842
-    second: Tutorial_Full_Set_Buttons_10
+      213: -3720767871151610601
+    second: magiccircle_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -131,55 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_0
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 521
-        width: 142
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3456649f4e2514eb0800000000000000
-      internalID: -4737414189628889789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_1
-      rect:
-        serializedVersion: 2
-        x: 367
-        y: 521
-        width: 142
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5f9c6b48dbdbc3b0800000000000000
-      internalID: -5491053598623359141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_2
+      name: magiccircle_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 341
-        width: 164
-        height: 164
+        y: 586.6666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c71041deba91c7c20800000000000000
-      internalID: 3205465260988563836
+      spriteID: 6163463162aef6280800000000000000
+      internalID: -9047755677109045738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_3
+      name: magiccircle_1
       rect:
         serializedVersion: 2
-        x: 172
-        y: 341
-        width: 164
-        height: 164
+        x: 347
+        y: 586.6666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cea0ba3910f06370800000000000000
-      internalID: 8313908903275441858
+      spriteID: fe54ba61878a24030800000000000000
+      internalID: 3477527096013309423
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_4
+      name: magiccircle_2
       rect:
         serializedVersion: 2
-        x: 344
-        y: 341
-        width: 164
-        height: 164
+        x: 694
+        y: 586.6666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,83 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fb0f52b6e85dad80800000000000000
-      internalID: -8237830395532473352
+      spriteID: 0ec1b61671d97f4c0800000000000000
+      internalID: -4253758599283925792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 171
-        width: 164
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01c9a68a074cddfc0800000000000000
-      internalID: -3468400149864473584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_6
-      rect:
-        serializedVersion: 2
-        x: 172
-        y: 171
-        width: 164
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9bd2ce85f3429ff0800000000000000
-      internalID: -30887525496988771
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_7
-      rect:
-        serializedVersion: 2
-        x: 344
-        y: 171
-        width: 164
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 865134b9f7e1e9450800000000000000
-      internalID: 6097344478920775016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_8
+      name: magiccircle_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 164
-        height: 164
+        y: 293.66666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a86a623542dce4d40800000000000000
-      internalID: 5570615345001440906
+      spriteID: 246c90aa66361fa40800000000000000
+      internalID: 5400206720784516674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_9
+      name: magiccircle_4
       rect:
         serializedVersion: 2
-        x: 172
-        y: 0
-        width: 164
-        height: 164
+        x: 347
+        y: 293.66666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +223,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c796810eca7e81280800000000000000
-      internalID: -9072246719657776772
+      spriteID: 74d8f53fa1c21b590800000000000000
+      internalID: -7660292996916605625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_10
+      name: magiccircle_5
       rect:
         serializedVersion: 2
-        x: 344
-        y: 0
-        width: 164
-        height: 164
+        x: 694
+        y: 293.66666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,8 +244,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f2459639f3dc0130800000000000000
-      internalID: 3534432874895065842
+      spriteID: a54e12a1eec14caa0800000000000000
+      internalID: -6141752182860290982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magiccircle_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0.6666565
+        width: 347.66666
+        height: 293.33334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12f16ceb38ba98c30800000000000000
+      internalID: 4362206296414756641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magiccircle_7
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 0.6666565
+        width: 347.66666
+        height: 293.33334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a155b0d5b7ebacb0800000000000000
+      internalID: -4851529405484936794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magiccircle_8
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 0.6666565
+        width: 347.66666
+        height: 293.33334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715625ca55d2d5cc0800000000000000
+      internalID: -3720767871151610601
       vertices: []
       indices: 
       edges: []

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52439b9101f904240a7925907af9a564, type: 3}
-  m_Name: Page 1
+  m_Name: Page 3
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 3c288fa67d1a49848a1859b2b4b7d0e7, type: 3}
-  text: 'This game can be played with either a dance pad or a keyboard.
+  sprite: {fileID: 21300000, guid: aa49a49230e883a4cbc36ba52f78c42a, type: 3}
+  text: 'The longer you last, the more enemies appear, but your score also starts
+    to multiply!
 
-    We recommend
-    the dance pad for extra sweat!'
+    Try to survive as long as possible!'

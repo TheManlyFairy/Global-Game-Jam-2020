@@ -1,40 +1,31 @@
 fileFormatVersion: 2
-guid: 0b5dafbfea2654632a27c45036ce6791
+guid: f0a1d7acb91b6a74291c47ab8bcd83b6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4737414189628889789
-    second: Tutorial_Full_Set_Buttons_0
+      213: -8785368367312723348
+    second: magicletters1_0
   - first:
-      213: -5491053598623359141
-    second: Tutorial_Full_Set_Buttons_1
+      213: -1659473258840500737
+    second: magicletters1_1
   - first:
-      213: 3205465260988563836
-    second: Tutorial_Full_Set_Buttons_2
+      213: 919165624422177513
+    second: magicletters1_2
   - first:
-      213: 8313908903275441858
-    second: Tutorial_Full_Set_Buttons_3
+      213: -730644862580341548
+    second: magicletters1_3
   - first:
-      213: -8237830395532473352
-    second: Tutorial_Full_Set_Buttons_4
+      213: 6710046288501170621
+    second: magicletters1_4
   - first:
-      213: -3468400149864473584
-    second: Tutorial_Full_Set_Buttons_5
+      213: -5075156185084362138
+    second: magicletters1_5
   - first:
-      213: -30887525496988771
-    second: Tutorial_Full_Set_Buttons_6
+      213: -2415159099591606587
+    second: magicletters1_6
   - first:
-      213: 6097344478920775016
-    second: Tutorial_Full_Set_Buttons_7
-  - first:
-      213: 5570615345001440906
-    second: Tutorial_Full_Set_Buttons_8
-  - first:
-      213: -9072246719657776772
-    second: Tutorial_Full_Set_Buttons_9
-  - first:
-      213: 3534432874895065842
-    second: Tutorial_Full_Set_Buttons_10
+      213: 3044768578389283614
+    second: magicletters1_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -131,55 +122,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_0
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 521
-        width: 142
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3456649f4e2514eb0800000000000000
-      internalID: -4737414189628889789
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_1
-      rect:
-        serializedVersion: 2
-        x: 367
-        y: 521
-        width: 142
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5f9c6b48dbdbc3b0800000000000000
-      internalID: -5491053598623359141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_2
+      name: magicletters1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 341
-        width: 164
-        height: 164
+        y: 586.6666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c71041deba91c7c20800000000000000
-      internalID: 3205465260988563836
+      spriteID: c622f5d440a141680800000000000000
+      internalID: -8785368367312723348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_3
+      name: magicletters1_1
       rect:
         serializedVersion: 2
-        x: 172
-        y: 341
-        width: 164
-        height: 164
+        x: 347
+        y: 586.6666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +157,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cea0ba3910f06370800000000000000
-      internalID: 8313908903275441858
+      spriteID: ff55d840ddd58f8e0800000000000000
+      internalID: -1659473258840500737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_4
+      name: magicletters1_2
       rect:
         serializedVersion: 2
-        x: 344
-        y: 341
-        width: 164
-        height: 164
+        x: 694
+        y: 586.6666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,83 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fb0f52b6e85dad80800000000000000
-      internalID: -8237830395532473352
+      spriteID: 9ea1f65f34881cc00800000000000000
+      internalID: 919165624422177513
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 171
-        width: 164
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 01c9a68a074cddfc0800000000000000
-      internalID: -3468400149864473584
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_6
-      rect:
-        serializedVersion: 2
-        x: 172
-        y: 171
-        width: 164
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9bd2ce85f3429ff0800000000000000
-      internalID: -30887525496988771
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_7
-      rect:
-        serializedVersion: 2
-        x: 344
-        y: 171
-        width: 164
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 865134b9f7e1e9450800000000000000
-      internalID: 6097344478920775016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_8
+      name: magicletters1_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 164
-        height: 164
+        y: 293.66666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +199,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a86a623542dce4d40800000000000000
-      internalID: 5570615345001440906
+      spriteID: 4d44fec5e5a3cd5f0800000000000000
+      internalID: -730644862580341548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_9
+      name: magicletters1_4
       rect:
         serializedVersion: 2
-        x: 172
-        y: 0
-        width: 164
-        height: 164
+        x: 694
+        y: 293.66666
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c796810eca7e81280800000000000000
-      internalID: -9072246719657776772
+      spriteID: db16a8c4c8fde1d50800000000000000
+      internalID: 6710046288501170621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tutorial_Full_Set_Buttons_10
+      name: magicletters1_5
       rect:
         serializedVersion: 2
-        x: 344
-        y: 0
-        width: 164
-        height: 164
+        x: 0
+        y: 0.6666565
+        width: 347.66666
+        height: 293.33334
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,8 +241,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f2459639f3dc0130800000000000000
-      internalID: 3534432874895065842
+      spriteID: 6628b68c65c6199b0800000000000000
+      internalID: -5075156185084362138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicletters1_6
+      rect:
+        serializedVersion: 2
+        x: 347
+        y: 0.6666565
+        width: 347.66666
+        height: 293.33334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ce3ac05891ab7ed0800000000000000
+      internalID: -2415159099591606587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicletters1_7
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 0.6666565
+        width: 347.66666
+        height: 293.33334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e131a22e3e0314a20800000000000000
+      internalID: 3044768578389283614
       vertices: []
       indices: 
       edges: []
