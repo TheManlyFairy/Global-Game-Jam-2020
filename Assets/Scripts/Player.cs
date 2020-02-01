@@ -8,9 +8,10 @@ public class Player : MonoBehaviour
     [SerializeField] ParticleSystem teleportOut;
     [SerializeField] ParticleSystem teleportIn;
     [SerializeField] SpriteRenderer spriteRend;
-    DancePadKey lastKeyPressed;
     [SerializeField] Transform[] defencePoses;
-
+    
+    private DancePadKey lastKeyPressed;
+    
     private void Update()
     {
         if (GameManager.CurrentGameMode == GameMode.Play)
@@ -26,8 +27,6 @@ public class Player : MonoBehaviour
 
     private void MoveAndRepair()
     {
-        int repairIndex = -1;
-
         if (Input.GetKeyDown((KeyCode)DancePadKey.TopLeft) || Input.GetKeyDown(KeyCode.Q))
         {
             if (lastKeyPressed != DancePadKey.TopLeft)

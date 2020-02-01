@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Utilities;
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class Enemy : MonoBehaviour
@@ -14,7 +15,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private int damageValue = 5;
     [SerializeField] private int scoreValue = 15;
-
+    
+    public float MinScale = 0.9f;
+    public float MaxScale = 1.1f;
+    
     public int DamageValue => damageValue;
 
     private void Start()
