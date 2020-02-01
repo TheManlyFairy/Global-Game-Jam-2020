@@ -98,6 +98,8 @@ MonoBehaviour:
   moveSpeed: 200
   damageValue: 20
   scoreValue: 15
+  MinScale: 0.9
+  MaxScale: 1.1
 --- !u!212 &1293559345520985453
 SpriteRenderer:
   m_ObjectHideFlags: 0
