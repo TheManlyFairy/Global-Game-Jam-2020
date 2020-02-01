@@ -10,6 +10,8 @@ public class Shield : MonoBehaviour
     static int repairPerPressValue = 0;
     private int currentHealth;
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private SpriteRenderer shieldCrack;
     private EdgeCollider2D edgeCollider2D;
     private AudioSource audioSrc;
     private void Start()
@@ -36,6 +38,10 @@ public class Shield : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        if (shieldCrack.enabled && currentHealth>maxHealth/2)
+        {
+            shieldCrack.enabled = false;
+        }
 
         ColorShield();
     }
@@ -53,6 +59,9 @@ public class Shield : MonoBehaviour
         {
             audioSrc.Play();
             currentHealth -= enemyCollided.DamageValue;
+
+            if (!shieldCrack.enabled && currentHealth < maxHealth / 2)
+                shieldCrack.enabled = true;
 
             if (currentHealth <= 0)
             {
